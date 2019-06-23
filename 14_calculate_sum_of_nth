@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+//Complete the following function.
+int find_nth_term(int n, int a, int b, int c)
+{
+  int arr[10],sum = 0, i ;
+  arr[0]=1;
+  arr[1]=2;
+  arr[2]=3;
+  for(i=3;i<n;i++)
+  {
+    arr[i] = arr[ i-3 ] + arr[ i-2 ] + arr[ i-1 ];
+  }
+  return arr[n-1];
+}
+
+int main()
+{
+  int n, a, b, c;
+  scanf("%d %d %d %d", &n, &a, &b, &c);
+  int ans = find_nth_term(n, a, b, c);
+
+  printf("%d", ans);
+  return 0;
+}
+
