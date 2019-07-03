@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+struct triangle
+{
+  int a,b,c;
+};
+typedef struct triangle triangle;
+int sort_by_area(triangle *tr, int n)
+{
+  triangle temp1;
+  int i,j;
+  float p,s,temp;
+  float *arr = malloc(n * sizeof(float));
+  for(i=0; i<n; i++)
+  {
+    p = ((tr[i].a) + (tr[i].b) + (tr[i].c))/2.0;
+    s = p * (p - (tr[i].a)) * (p - (tr[i].b)) * (p - (tr[i].c));
+    arr[i] = sqrtf(s);
+  }
+  for(i=0; i<n; i++)
+  {
+    printf("%d %d %d\n", tr[i].a, tr[i].b, tr[i].c);
+  }
+  for(i=0; i<n; i++)
+  {
+    for(j=0; j<n-i-1; j++)
+    {
+      if(arr[j] != arr[j+1])
+      {
+        if(arr[j] > arr[j+1])
+        {
+          temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
+
+          temp1=tr[j];
+          tr[j]=tr[j+1];
+          tr[j+1]=temp1;
+        }
+      }
+      else
+      {
+        return 0;
+      }
+    }
+  }
+  for(i=0; i<n; i++)
+  {
+    printf("%d %d %d\n", tr[i].a, tr[i].b, tr[i].c);
+  }
+}
+int main()
+{
+  int n,i;
+  scanf("%d",&n);
+  triangle *tr = malloc(n * sizeof(triangle));
+  for(i=0; i<n; i++){scanf("%d%d%d",&tr[i].a,&tr[i].b,&tr[i].c);}
+  sort_by_area(tr,n);
+  return 0;
+}
