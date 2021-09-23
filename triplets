@@ -1,0 +1,41 @@
+int* compareTriplets(int a_count, int* a, int b_count, int* b, int* result_count) {
+    
+    a_count=0;
+    b_count=0;
+    *result_count=2;
+    
+    int *answer=malloc(sizeof(int));
+    if(a[0]>b[0])
+    {
+        a_count++;
+    }
+    
+    if(a[1]>b[1] )
+    {
+        a_count++;
+    }
+    
+    if(a[2]>b[2])
+    {
+        a_count++;
+    }
+    
+    if(a[0]<b[0])
+    {
+        b_count++;
+    }
+    
+    if(a[1]<b[1])
+    {
+        b_count++;
+    }
+    if(a[2]<b[2])
+    {
+        b_count++;
+    }
+    answer[0]=a_count;
+    answer[1]=b_count;
+    
+    return answer;
+
+}
